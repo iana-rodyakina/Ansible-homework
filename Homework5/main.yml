@@ -1,0 +1,30 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install Apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Apache
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Create user jenny
+      ansible.builtin.user:
+        name: jenny
+
+    - name: Create user rose
+      ansible.builtin.user:
+        name: rose
+
+    - name: Create user jisoo
+      ansible.builtin.user:
+        name: jisoo
+
+    - name: Create user lisa
+      ansible.builtin.user:
+        name: lisa
